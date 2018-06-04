@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
   def new
-
+    @user = User.new
+    binding.pry
   end
 
   def create
@@ -11,7 +12,8 @@ class SessionsController < ApplicationController
       redirect_to @user
       flash[:success] = "Welcome Back, #{current_user.username}!"
     else
-      render 'static_pages/home'
+      flash[:notice] = "Invalid email/password combination"
+      redirect_to root_path  
     end
   end
 end
