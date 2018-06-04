@@ -1,0 +1,23 @@
+<%= form_for @user do |f| %>
+  <table>
+    <tr style="text-align:left">
+      <th>
+        <%= f.label :email %>
+      </th>
+      <th>
+        <%= f.label :password %>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <%= f.text_field :email %>
+      </td>
+      <td>
+        <%= f.password_field :password %>
+      </td>
+      <td>
+        <%= f.submit "Log In" %>
+      </td>
+    </tr>
+  </table>
+<% end %>
