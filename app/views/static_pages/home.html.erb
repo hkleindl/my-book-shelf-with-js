@@ -1,8 +1,20 @@
-<h1>Welcome to MyBookShelf</h1>
+    <%= flash[:notice] %>
+<div class="container banner">  
+    <div class="row">
+        <div class="col-sm-4"><h1>MyBookShelf</h1></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <%= render '/sessions/login' %>
+        </div>
+    </div>
+</div>
+  
+<br></br>
 
-<%= render '/sessions/login' %>
-<%= flash[:notice] %>
+<!-- <h1>Welcome to MyBookShelf</h1>
 
-<h2>Keep track of your favorite books and discover new ones</h2>
+<h2>Keep track of your favorite books and discover new ones</h2> -->
 
-<%= link_to "Sign Up", signup_path %>  
+<%#= link_to "Sign Up", signup_path %>  
+
+    
