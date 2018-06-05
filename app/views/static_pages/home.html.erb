@@ -1,7 +1,11 @@
     <%= flash[:notice] %>
-<div class="container banner">  
+<div class="container-fluid banner">  
     <div class="row">
-        <div class="col-sm-4"><h1>MyBookShelf</h1></div>
+        <div class="col-sm-4">
+            <h1>
+               MyBookShelf 
+            </h1>
+        </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <%= render '/sessions/login' %>
@@ -9,12 +13,16 @@
     </div>
 </div>
   
-<br></br>
 
-<!-- <h1>Welcome to MyBookShelf</h1>
+<div class="center">
+    <h1 class="">Welcome to MyBookShelf</h1>
 
-<h2>Keep track of your favorite books and discover new ones</h2> -->
+    <h3 class="tagline">Keep track of your favorite books and discover new ones</h3> 
 
-<%#= link_to "Sign Up", signup_path %>  
+    <br></br>
+
+    <%= link_to "Sign Up", signup_path, class: "btn-lg btn-primary" %> 
+</div>
+ 
 
     
