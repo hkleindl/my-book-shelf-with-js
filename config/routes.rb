@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'books/index'
+  get 'books/show'
   root 'static_pages#home'
   get '/signup', to: 'users#new'
   resources :users, only: [:create, :show] do
