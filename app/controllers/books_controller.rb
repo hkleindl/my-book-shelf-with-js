@@ -15,4 +15,11 @@ class BooksController < ApplicationController
     @book.ratings.build
     
   end
+
+  private
+
+    def book_params
+      params.require(:book).permit(:name, :author_name, ratings_attributes: [:stars])
+    end
+    
 end
