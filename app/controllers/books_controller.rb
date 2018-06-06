@@ -9,4 +9,10 @@ class BooksController < ApplicationController
 
   def show
   end
+
+  def new
+    @book = Book.new
+    @book.ratings.build
+    
+  end
 end
