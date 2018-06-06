@@ -1,11 +1,14 @@
 <% if current_user %>
-  <h1>My Books</h1>
+  <h1>My Books</h1><br>
+  <%= link_to "Add Book", new_user_book_path(current_user) %>
 <% else %>
   <h1>Browse Books</h1>
 <% end %>
 
+
+
 <ul>
   <% @books.each do |book| %>
-    <li><%= link_to book.name,  book_path %></li>
+    <li><%= link_to book.name, book_path %></li>
   <% end %>
 </ul>
