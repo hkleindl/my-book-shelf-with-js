@@ -13,7 +13,15 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
     @book.ratings.build
-    
+  end
+
+  def create
+    @book = Book.new(book_params)
+      if @book.save
+        redirect_to user_books_path(current_user)
+      else
+        render :new
+      end
   end
 
   private
