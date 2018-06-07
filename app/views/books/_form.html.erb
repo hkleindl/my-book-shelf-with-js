@@ -12,8 +12,14 @@
   <br>
 
   <%= fields_for :ratings do |rating| %>
+
+    <%= rating.hidden_field :user_id, current_user.id %>
+
+    <%= rating.hidden_field :book_id, @book.id %>
+
     <%= rating.label :stars %>
     <%= rating.number_field :stars %><br>
+
   <% end %>
 
   <%= f.submit %>

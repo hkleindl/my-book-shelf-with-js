@@ -17,17 +17,18 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-      if @book.save
-        redirect_to user_books_path(current_user)
-      else
-        render :new
-      end
+    if @book.save
+      #to do: associate @book with current_user
+      redirect_to user_books_path(current_user)
+    else
+      render :new
+    end
   end
 
   private
 
     def book_params
-      params.require(:book).permit(:name, :author_name, ratings_attributes: [:stars])
+      params.require(:book).permit(:name, :author_name, ratings_attributes: [:stars, :user_id, :book_id])
     end
     
 end
