@@ -22,7 +22,7 @@ class BooksController < ApplicationController
     @book.ratings.build(stars: params[:ratings][:stars], user_id: params[:user_id])
     
     if @book.save
-      redirect_to user_books_path(current_user)
+      redirect_to user_books_path(params[:user_id])
     else
       render :new
     end
