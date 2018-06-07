@@ -8,7 +8,6 @@
 
 
 <ul>
-  <% binding.pry %>
   <% @books.each do |book| %>
     <li><%= link_to book.name, book_path %></li>
   <% end %>

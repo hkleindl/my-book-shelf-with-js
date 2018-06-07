@@ -11,14 +11,17 @@ class BooksController < ApplicationController
   end
 
   def new
+    @user = User.find_by(id: params[:user_id])
     @book = Book.new
     @book.ratings.build
   end
 
   def create
     @book = Book.new(book_params)
+    @book.users << User.find_by(params[:user_id])
+    @book.ratings.build(stars: params[:ratings][:stars], user_id: params[:user_id])
+    
     if @book.save
-      #to do: associate @book with current_user
       redirect_to user_books_path(current_user)
     else
       render :new
@@ -28,7 +31,8 @@ class BooksController < ApplicationController
   private
 
     def book_params
-      params.require(:book).permit(:name, :author_name, ratings_attributes: [:stars, :user_id, :book_id])
+      params.require(:book).permit(:name, :author_name, ratings_attributes: [:stars])
     end
     
 end
+
