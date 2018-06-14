@@ -11,12 +11,15 @@
     </datalist>
   <br>
 
-  <%= fields_for :ratings do |rating| %>
+  <%= f.label :genre %>
+  <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %><br>
 
-    <%= rating.label :stars %>
-    <%= rating.number_field :stars %><br>
 
+  <%= f.label :rating %>
+  <%= f.fields_for :ratings do |r| %>
+    <%= r.number_field :stars %><br>
   <% end %>
 
+  
   <%= f.submit %>
 <% end %>

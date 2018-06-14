@@ -1,0 +1,8 @@
+{
+    "window.zoomLevel": 1,
+    "editor.fontSize": 12,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.cursorBlinking": true
+}

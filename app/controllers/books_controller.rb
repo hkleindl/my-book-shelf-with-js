@@ -19,8 +19,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.users << User.find_by(params[:user_id])
-    @book.ratings.build(stars: params[:ratings][:stars], user_id: params[:user_id])
-    
+    rating = @book.ratings.find do |rating|
+      rating.user_id == params[:user_id].to_i  
+    end
+    rating.stars = params[:book][:ratings_attributes]["0"][:stars]
     if @book.save
       redirect_to user_books_path(params[:user_id])
     else
@@ -31,7 +33,7 @@ class BooksController < ApplicationController
   private
 
     def book_params
-      params.require(:book).permit(:name, :author_name, ratings_attributes: [:stars])
+      params.require(:book).permit(:name, :author_name, genre_ids:[]) #, ratings_attributes: [:stars]
     end
     
 end

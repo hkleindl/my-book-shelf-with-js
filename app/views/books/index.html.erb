@@ -7,11 +7,24 @@
 
 
 
-<ul>
+<ol>
   <% @books.each do |book| %>
-    <li><%= link_to book.name, book_path(book) %></li>
+    <li><%= link_to book.name, book_path(book) %>
+      <ul>
+        <li>Author: <%= book.author_name %></li>
+        <li>Genres: 
+          <ul>
+            <% book.genres.each do |genre| %>
+              <li><%= genre.name %></li>
+            <% end %></li>
+          </ul>
+        </li>
+        <li>Rating: <%= pluralize(book.ratings.where(user_id: params[:user_id]).pluck(:stars)[0], 'star') %></li>
+      </ul>
+    </li>
   <% end %>
-</ul>
+</ol>
+
 
 
 
