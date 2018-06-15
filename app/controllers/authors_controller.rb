@@ -3,5 +3,6 @@ class AuthorsController < ApplicationController
   end
 
   def show
+    @author = Author.find_by(params[:author_id])
   end
 end
