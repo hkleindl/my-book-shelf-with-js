@@ -14,6 +14,7 @@ class BooksController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @book = Book.new
     @book.ratings.build
+    @book.genres.build
   end
 
   def create
@@ -33,7 +34,7 @@ class BooksController < ApplicationController
   private
 
     def book_params
-      params.require(:book).permit(:name, :author_name, genre_ids:[]) #, ratings_attributes: [:stars]
+      params.require(:book).permit(:name, :author_name, genre_ids:[], genres_attributes: [:name])
     end
     
 end

@@ -12,13 +12,17 @@
   <br>
 
   <%= f.label :genre %>
-  <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %><br>
+  <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+  <%= f.fields_for :genres do |g| %>
+    <%= g.text_field :name %>
+  <% end %>
+  <br>
 
 
   <%= f.label :rating %>
   <%= f.fields_for :ratings do |r| %>
-    <%= r.number_field :stars %><br>
-  <% end %>
+    <%= r.number_field :stars %>
+  <% end %><br>
 
   
   <%= f.submit %>
