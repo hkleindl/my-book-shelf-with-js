@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'authors/index'
+  get 'authors/show'
   get 'books/index'
   get 'books/show'
   root 'static_pages#home'
