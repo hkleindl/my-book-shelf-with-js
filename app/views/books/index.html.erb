@@ -11,7 +11,7 @@
   <% @books.each do |book| %>
     <li><%= link_to book.name, book_path(book) %>
       <ul>
-        <li>Author: <%= book.author_name %></li>
+        <li>Author: <%= link_to book.author_name, author_path(book.author) %></li>
         <li>Genres: 
           <ul>
             <% book.genres.each do |genre| %>
