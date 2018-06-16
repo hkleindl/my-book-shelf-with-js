@@ -10,6 +10,24 @@
   </head>
 
   <body>
-    <%= yield %>
+  <% unless current_page?(root_path) %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+          <%= link_to "MyBookShelf", '#', id: "logo" %>
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "Home", user_path(current_user) %></li>
+              <li><%= link_to "My Books", user_books_path(current_user) %></li>
+              <li><%= link_to "Browse Books", "#" %></li>
+              <li><%= link_to "Log out", '#' %></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+  <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
+
   </body>
 </html>
