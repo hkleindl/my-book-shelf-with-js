@@ -11,7 +11,7 @@
         <li>Genres: 
           <ul>
             <% book.genres.each do |genre| %>
-              <li><%= genre.name %></li>
+              <li><%= link_to genre.name, genre_path(genre) %></li>
             <% end %></li>
           </ul>
         </li>
