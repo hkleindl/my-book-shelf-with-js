@@ -1,9 +1,5 @@
-<% if current_user %>
-  <h1>My Books</h1><br>
-  <%= link_to "Add Book", new_user_book_path(current_user) %>
-<% else %>
-  <h1>Browse Books</h1>
-<% end %>
+
+<h1>All Books</h1>
 
 
 
@@ -19,7 +15,7 @@
             <% end %></li>
           </ul>
         </li>
-        <li>Rating: <%= pluralize(book.ratings.where(user_id: params[:user_id]).pluck(:stars)[0], 'star') %></li>
+        <li>Average Rating: <%= pluralize(book.ratings.average(:stars), 'star') %></li>
       </ul>
     </li>
   <% end %>
