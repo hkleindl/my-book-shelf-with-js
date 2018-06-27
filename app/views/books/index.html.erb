@@ -15,9 +15,12 @@
             <% end %></li>
           </ul>
         </li>
-        <li>Average Rating: <%= pluralize(book.ratings.average(:stars), 'star') %></li>
+        <li>Average User Rating: <%= pluralize(book.ratings.average(:stars), 'star') %></li>
       </ul>
+      <%= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %>
     </li>
+    <br>
+    
   <% end %>
 </ol>
 
