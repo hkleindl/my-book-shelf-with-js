@@ -3,5 +3,7 @@ class GenresController < ApplicationController
   end
 
   def show
+    @genre = Genre.find_by(id: params[:id])
+    @books = @genre.books
   end
 end

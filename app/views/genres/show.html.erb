@@ -1,2 +1,7 @@
-<h1>Genres#show</h1>
-<p>Find me in app/views/genres/show.html.erb</p>
+<h1><%= @genre.name %></h1>
+
+<ul>
+  <% @books.each do |book| %>
+    <li><%= link_to book.name, book_path(book) %> by: <%= link_to book.author_name, author_path(book.author) %></li>
+  <% end %>
+</ul>

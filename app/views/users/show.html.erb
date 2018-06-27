@@ -1,5 +1,5 @@
 <h1><%= flash[:success] %></h1>
-  <h1 style="padding: 100px 0 20px 0">My Books</h1>
+  <h1 class="mybooks">My Books</h1>
 
 <div class="scrolling-wrapper">
   <% @books.each do |book| %>
@@ -10,11 +10,11 @@
         <div class="card dropdown">
           <h3><%= link_to book.name %></h3>
           <p>by: <%= link_to book.author_name, author_path(book.author) %></p>
-          <p><%= pluralize(book.ratings.where(user_id: params[:user_id]).pluck(:stars)[0], 'star') %></p>
+          <p><%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p>
           <% book.genres.each do |g| %>
             <p><%= link_to g.name, genre_path(g) %></p>
           <% end %>  
         </div>
   <% end %>
 </div>
-
+ <!-- put image source on bottom of page -->
