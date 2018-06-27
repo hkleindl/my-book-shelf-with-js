@@ -15,14 +15,26 @@
         <div class="container">
           <%= link_to "MyBookShelf", user_path(current_user), id: "logo" %>
           <nav>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar nav navbar-nav navbar-right">
               <li><%= link_to "Home", user_path(current_user) %></li>
-              <li><%= link_to "Browse Books", books_path %></li>
+              <li class="dropdown">
+
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Browse
+                <span class="caret"></span></a>
+
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Books", books_path %></li>
+                  <li><%= link_to "Authors", authors_path %></li>
+                  <li><%= link_to "Genres", genres_path %></li>
+                </ul>
+
+              </li>
               <li><%= link_to "Log out", '#' %></li>
             </ul>
           </nav>
         </div>
     </header>
+
   <% end %>
     <div class="container">
       <%= yield %>
