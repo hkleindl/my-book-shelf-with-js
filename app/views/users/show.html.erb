@@ -8,7 +8,7 @@
       
 
         <div class="card dropdown">
-          <h3><%= link_to book.name %></h3>
+          <h3><%= link_to book.name, book_path(book) %></h3>
           <p>by: <%= link_to book.author_name, author_path(book.author) %></p>
           <p><%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p>
           <% book.genres.each do |g| %>

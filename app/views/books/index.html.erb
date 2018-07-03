@@ -1,11 +1,11 @@
 
 <h1>All Books</h1>
 
-
+<%= flash[:notice] %>
 
 <ol>
   <% @books.each do |book| %>
-    <li><%= link_to book.name, book_path(book) %>
+    <h4><li><%= link_to book.name, book_path(book) %></h4>
       <ul>
         <li>Author: <%= link_to book.author_name, author_path(book.author) %></li>
         <li>Genres: 
@@ -17,9 +17,12 @@
         </li>
         <li>Average User Rating: <%= pluralize(book.ratings.average(:stars), 'star') %></li>
       </ul>
-      <%= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %>
+      <% if !current_user.books.include?(Book.find_by(id: book.id)) %>
+        <%= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %>
+      
+      <% end %>  
     </li>
-    <br>
+    <br></br>
     
   <% end %>
 </ol>
