@@ -17,10 +17,9 @@
         </li>
         <li>Average User Rating: <%= pluralize(book.ratings.average(:stars), 'star') %></li>
       </ul>
-      <% if !current_user.books.include?(Book.find_by(id: book.id)) %>
-        <%= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %>
+
+      <%= render partial: "add_book", locals: { book: book } %>
       
-      <% end %>  
     </li>
     <br></br>
     
