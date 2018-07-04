@@ -1,4 +1,3 @@
-<%# binding.pry %>
 <% if !current_user.books.include?(Book.find_by(id: book.id)) %>
     <%= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %>
       
