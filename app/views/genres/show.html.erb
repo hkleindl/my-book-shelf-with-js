@@ -5,6 +5,4 @@
     <li><%= link_to book.name, book_path(book) %> by: <%= link_to book.author_name, author_path(book.author) %></li>
     <%= render partial: "books/add_book", locals: { book: book } %><br></br>
   <% end %>
-        
-
 </ul>
