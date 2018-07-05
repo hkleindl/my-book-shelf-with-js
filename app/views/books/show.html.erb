@@ -1,4 +1,7 @@
 <h1><%= @book.name %></h1>
+
+<%= flash[:notice] %>
+
 <h3>By: <%= link_to @book.author_name, author_path(@book.author) %></h3><br>
 <h4>Genres:</h4>
 <ul>
@@ -6,3 +9,5 @@
     <li><%= g.name %></li>
   <% end %>
 </ul>
+
+<%= render partial: "books/add_book", locals: { book: @book } %><br></br>

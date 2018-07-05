@@ -11,7 +11,7 @@ class RatingsController < ApplicationController
       redirect_to user_path(@rating.user_id)
     else
       flash[:notice] = @rating.errors.full_messages
-      redirect_back(fallback_location: books_path)
+      redirect_to book_path(@rating.book)
     end
   end
 

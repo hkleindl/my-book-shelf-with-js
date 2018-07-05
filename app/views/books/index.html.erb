@@ -1,8 +1,6 @@
 
 <h1>All Books</h1>
 
-<%= flash[:notice] %>
-
 <ol>
   <% @books.each do |book| %>
     <h4><li><%= link_to book.name, book_path(book) %></h4>
@@ -18,8 +16,7 @@
         <li>Average User Rating: <%= pluralize(book.ratings.average(:stars), 'star') %></li>
       </ul>
 
-      <%= render partial: "add_book", locals: { book: book } %>
-      
+
     </li>
     <br></br>
     
