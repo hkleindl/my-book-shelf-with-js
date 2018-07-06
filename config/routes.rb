@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   get 'books/show'
   root 'static_pages#home'
   get '/signup', to: 'users#new'
-  resources :users, only: [:create, :show, :destroy] do
+  resources :users, only: [:create, :show] do
     resources :books, only: [:index, :show, :new, :create]
   end
   resources :books
-  resources :sessions, only: 
-  [:create]
+  resources :sessions, only: [:create]
+  delete '/logout', to: 'sessions#destroy'
+
 
   get '/auth/github/callback', to: 'sessions#create'
 
