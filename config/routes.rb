@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     resources :books, only: [:index, :show, :new, :create]
   end
   resources :books
-  resources :sessions, only: [:create]
+  resources :sessions, only: 
+  [:create]
+
+  get '/auth/github/callback', to: 'sessions#create'
+
   resources :authors, only: [:index, :show]
   resources :genres, only: [:index, :show]
   resources :ratings, only: [:new, :create]
