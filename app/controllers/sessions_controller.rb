@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  # skip_before_action :logged_in_user
+
   def new
     @user = User.new
     binding.pry
@@ -12,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user)
     else
       @user = User.find_by(email: params[:user][:email])
-      if @user && @user.authenticate(:password)
+      if @user && @user.authenticate(params[:user][:password])
         login(@user)
         redirect_to @user
         flash[:success] = "Welcome Back, #{current_user.username}!"
