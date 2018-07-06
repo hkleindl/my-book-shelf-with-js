@@ -9,10 +9,14 @@ class BooksController < ApplicationController
   end
 
   def new
-    @user = User.find_by(id: params[:user_id])
-    @book = Book.new
-    @book.ratings.build
-    @book.genres.build
+    if params[:user_id].to_i == current_user.id
+      @user = User.find_by(id: params[:user_id])
+      @book = Book.new
+      @book.ratings.build
+      @book.genres.build
+    else
+      redirect_to new_user_book_path(current_user)
+    end
   end
 
   def create

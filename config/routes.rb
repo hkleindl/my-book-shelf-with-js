@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/signup', to: 'users#new'
   resources :users, only: [:create, :show] do
-    resources :books, only: [:index, :show, :new, :create]
+    resources :books, only: [:new, :create]
   end
   resources :books
   resources :sessions, only: [:create]
