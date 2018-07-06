@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'books/show'
   root 'static_pages#home'
   get '/signup', to: 'users#new'
-  resources :users, only: [:create, :show] do
+  resources :users, only: [:create, :show, :destroy] do
     resources :books, only: [:index, :show, :new, :create]
   end
   resources :books
