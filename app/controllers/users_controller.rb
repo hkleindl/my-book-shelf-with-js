@@ -16,8 +16,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    @books = @user.books
+    if params[:id].to_i == current_user.id
+      @user = User.find_by(id: params[:id])
+      @books = @user.books
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   private
