@@ -15,17 +15,17 @@
   </div>
   <% end %>
 
-  <%#= f.label :username %>
-  <%= f.text_field :username, placeholder: "Username" %>
+  <%= f.label :username %>
+  <%= f.text_field :username %><br>
 
-  <%#= f.label :email %>
-  <%= f.text_field :email, placeholder: "Email" %>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
 
-  <%#= f.label :password %>
-  <%= f.password_field :password , placeholder: "Password"%>
+  <%= f.label :password %>
+  <%= f.password_field :password%><br>
 
-  <%#= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+  <%= f.label "Confirm Password" %>
+  <%= f.password_field :password_confirmation %><br>
 
-  <%= f.submit "Sign Up" %>
+  <%= f.submit "Sign Up", class: "btn btn-primary" %>
 <% end %>

@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+
   def index
     @books = Book.all
   
@@ -9,7 +10,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    if params[:user_id].to_i == current_user.id
+    if params[:user_id].to_i == current_user.id 
       @user = User.find_by(id: params[:user_id])
       @book = Book.new
       @book.ratings.build
