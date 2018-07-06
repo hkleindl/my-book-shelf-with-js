@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     @books = @user.books
   end
 
+  def destroy
+    log_out
+    redirect_to root_path
+  end
+
   private
 
     def user_params
