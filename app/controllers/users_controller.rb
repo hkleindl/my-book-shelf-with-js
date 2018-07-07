@@ -21,7 +21,9 @@ class UsersController < ApplicationController
   def show
     if params[:id].to_i == current_user.id
       @user = User.find_by(id: params[:id])
-      @books = @user.books
+      @my_books = @user.books
+      @highly_rated_books = Book.highly_rated
+      @popular_books = Book.popular
     else
       redirect_to user_path(current_user)
     end
