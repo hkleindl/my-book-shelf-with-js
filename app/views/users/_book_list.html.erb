@@ -9,9 +9,9 @@
           <% book.genres.each do |g| %>
             <p><%= link_to g.name, genre_path(g) %></p>
           <% end %> 
+          <p>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></p>
           <% if user.books.include?(book) %>
             <p>My Rating: <%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p> 
           <% end %>
-          <p>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></p>
         </div>
   
