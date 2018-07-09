@@ -15,6 +15,14 @@ class RatingsController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
+
+  def update
+    
+  end
+
   private
 
     def rating_params
