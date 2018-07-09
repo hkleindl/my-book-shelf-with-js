@@ -13,7 +13,7 @@
             <% end %></li>
           </ul>
         </li>
-        <li>Average User Rating: <%= pluralize(book.ratings.average(:stars).round(1), 'star') %></li>
+        <li>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></li>
       </ul>
 
 

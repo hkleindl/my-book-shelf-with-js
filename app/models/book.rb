@@ -11,6 +11,10 @@ class Book < ApplicationRecord
   scope :highly_rated, -> { joins(:ratings).merge(Rating.group(:book_id).having('AVG(stars) > 4')) }
   scope :popular, -> { joins(:ratings).group(:id).order('COUNT(ratings.id) DESC').limit(10) }
 
+  def average_star_rating
+    self.ratings.average(:stars).round(1)    
+  end
+
   def author_name=(name)
     self.author = Author.find_or_create_by(name: name)
   end

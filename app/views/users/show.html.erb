@@ -1,27 +1,36 @@
 <h1><%= flash[:success] %></h1>
+  
+<div class="book_list">
   <h1 class="mybooks">My Books</h1>
 
-<div class="scrolling-wrapper">
-  <% @my_books.each do |book| %>
-        <%= render partial: "book_list", locals: { book: book } %>
-  <% end %>
+  <div class="scrolling-wrapper">
+    <% @my_books.each do |book| %>
+          <%= render partial: "book_list", locals: { book: book, user: @user } %>
+    <% end %>
+  </div>
 </div>
 
-<h1>Highly Rated Books</h1>
+<div class="book_list">
+  <h1>Highly Rated Books</h1>
 
-<div class="scrolling-wrapper">
-  <% @highly_rated_books.each do |book| %>
-    <%= render partial: "book_list", locals: { book: book } %>
-  <% end %>
+  <div class="scrolling-wrapper">
+    <% @highly_rated_books.each do |book| %>
+      <%= render partial: "book_list", locals: { book: book, user: @user } %>
+    <% end %>
+  </div>
 </div>
 
-<h1>Popular Books</h1>
 
-<div class="scrolling-wrapper">
-  <% @popular_books.each do |book| %>
-    <%= render partial: "book_list", locals: { book: book } %>
-  <% end %>
+<div class="book_list">
+  <h1>Popular Books</h1>
+
+  <div class="scrolling-wrapper">
+    <% @popular_books.each do |book| %>
+      <%= render partial: "book_list", locals: { book: book, user: @user } %>
+    <% end %>
+  </div>
 </div>
+
 
 
  <!-- put image source on bottom of page -->
