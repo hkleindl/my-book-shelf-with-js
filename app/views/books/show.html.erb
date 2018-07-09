@@ -13,7 +13,7 @@
   <% if !current_user.books.include?(Book.find_by(id: @book.id)) %>
     <%= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => @book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %>
   <% else %>
-    <%= link_to "Edit My Rating", "#", class: "btn btn-warning" %>  
+    <%= link_to "Edit My Rating", {:controller => "ratings", :action => "edit", :book_id => @book.id, :user_id => session[:user_id]}, class: "btn btn-warning" %>  
     <%= link_to "Delete My Rating", "#", class: "btn btn-danger" %>
   <% end %>  
 
