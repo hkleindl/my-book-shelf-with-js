@@ -22,13 +22,13 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.users << User.find_by(params[:user_id])
+    @book.users << User.find_by(id: params[:user_id])
     rating = @book.ratings.find do |rating|
       rating.user_id == params[:user_id].to_i  
     end
     rating.stars = params[:book][:ratings_attributes]["0"][:stars]
     if @book.save
-      redirect_to user_books_path(params[:user_id])
+      redirect_to user_path(params[:user_id])
     else
       render :new
     end

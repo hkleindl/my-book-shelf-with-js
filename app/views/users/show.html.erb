@@ -8,7 +8,10 @@
           <%= render partial: "book_list", locals: { book: book, user: @user } %>
     <% end %>
   </div>
-</div>
+  
+</div><br>
+<%= link_to "Add Book from Library", books_path, class:"btn btn-primary" %> 
+<%= link_to "Create New Book", new_book_path, class:"btn btn-primary" %>
 
 <div class="book_list">
   <h1>Highly Rated Books</h1>
@@ -34,4 +37,3 @@
 
 <br></br>
 <a href="https://icons8.com">Icon pack by Icons8</a>
- <!-- put image source on bottom of page -->
