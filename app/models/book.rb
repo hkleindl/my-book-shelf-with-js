@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   has_many :genres, through: :book_genres
 
   validates :name, :author_name, presence: true
+  validates :name, uniqueness: { scope: :author, message: "Book name by that author already exists." }
 
   accepts_nested_attributes_for :ratings
   accepts_nested_attributes_for :genres
