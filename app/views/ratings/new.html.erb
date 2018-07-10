@@ -1,6 +1,7 @@
 <h1>Add '<%= @book.name %>' to MyBooks?</h1>
 
 <%= form_for @rating do |f| %>
+
   <%= f.hidden_field :user_id, value: @user.id %>
   <%= f.hidden_field :book_id, value: @book.id %>
   <%= f.label :stars %>

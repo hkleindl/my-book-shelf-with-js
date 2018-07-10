@@ -1,8 +1,0 @@
-<%= form_for rating do |f| %>
-  <%= f.hidden_field :user_id, value: @user.id %>
-  <%= f.hidden_field :book_id, value: @book.id %>
-  <%= f.label :stars %>
-  <%= f.number_field :stars %>
-  <%= f.submit "Add to MyBooks" %>
-<% end %>
-<br></br>
