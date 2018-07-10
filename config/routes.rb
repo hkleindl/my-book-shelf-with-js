@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :authors, only: [:index, :show]
   resources :genres, only: [:index, :show]
-  resources :ratings, only: [:new, :create, :edit, :update]
+  resources :ratings, only: [:new, :create, :edit, :update, :delete]
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
