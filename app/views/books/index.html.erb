@@ -3,22 +3,22 @@
 
 <ol>
   <% @books.each do |book| %>
-    <h4><li><%= link_to book.name, book_path(book) %></h4>
-      <ul>
-        <li>Author: <%= link_to book.author_name, author_path(book.author) %></li>
-        <li>Genres: 
-          <ul>
-            <% book.genres.each do |genre| %>
-              <li><%= link_to genre.name, genre_path(genre) %></li>
-            <% end %></li>
-          </ul>
-        </li>
-        <li>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></li>
-        <% if current_user.books.include?(book) %>
-          <li>My Rating: <%= pluralize(book.ratings.where(user_id: current_user.id).pluck(:stars)[0], 'star') %></li>
-        <% end %>
-      </ul>
-    </li>    
+    <div class="book_list">
+      <h4><li><%= link_to book.name, book_path(book) %></h4>
+      <p>by: <%= link_to book.author_name, author_path(book.author) %></p>
+
+      <% book.genres.each do |g| %>
+        <p><%= link_to g.name, genre_path(g) %></p>
+      <% end %>
+      
+      <p>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></p>
+
+      <% if current_user.books.include?(book) %>
+        <p>My Rating: <%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p> 
+      <% end %>
+      </li> 
+    </div> 
+    <br>  
   <% end %>
 </ol>
 <br></br>

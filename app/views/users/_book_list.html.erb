@@ -3,7 +3,7 @@
         
       
 
-        <div class="card dropdown">
+        <div class="card">
           <h3><%= link_to book.name, book_path(book) %></h3>
           <p>by: <%= link_to book.author_name, author_path(book.author) %></p>
           <% book.genres.each do |g| %>
