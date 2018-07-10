@@ -20,7 +20,12 @@ class RatingsController < ApplicationController
   end
 
   def update
-    
+    @rating = Rating.find_by(id: params[:id])
+    if @rating.update(stars: params[:rating][:stars])
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
   end
 
   private
