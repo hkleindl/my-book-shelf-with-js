@@ -28,6 +28,12 @@ class RatingsController < ApplicationController
     end
   end
 
+  def destroy
+    @rating = Rating.find_by(id: params[:id])
+    @rating.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
     def rating_params
