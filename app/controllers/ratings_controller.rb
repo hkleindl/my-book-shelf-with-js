@@ -16,7 +16,7 @@ class RatingsController < ApplicationController
   end
 
   def edit
-    
+    @rating = Rating.find_by(id: params[:id])
   end
 
   def update

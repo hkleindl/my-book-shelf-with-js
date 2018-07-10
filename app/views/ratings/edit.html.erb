@@ -1,0 +1,8 @@
+<h1>Edit your rating for <%= @rating.book.name %></h1>
+
+<%= form_for @rating do |f| %>
+  <%= f.label :stars %>
+  <%= f.number_field :stars %>
+  <%= f.submit %>
+<% end %>
+<br></br>
