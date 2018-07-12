@@ -1,0 +1,19 @@
+<div class="login-form">
+    <%= form_for(:user, url: sessions_path) do |f| %>
+    <table>
+      
+      <tr>
+        <td>
+          <%= f.text_field :email, placeholder: "Email", class: "login-form-fields" %>
+        </td>
+        <td>
+          <%= f.password_field :password, placeholder: "Password", class: "login-form-fields" %>
+        </td>
+        <td>
+          <%= f.submit "Log In", class: "btn btn-sm btn-primary login-form-fields" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+  
+  </div>

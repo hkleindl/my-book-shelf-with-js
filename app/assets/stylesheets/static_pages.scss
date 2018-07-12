@@ -7,17 +7,16 @@
 
 // Header
 
-.banner {
-  color: white;
-  background-color: rgb(26, 31, 31);
-  overflow: hidden;
-}
 
 .login-form {
   color:  rgb(26, 31, 31);
   float: right;
   font-size: 14px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.login-form-fields {
+  margin:10px 4px 0 0
 }
 
 .center {

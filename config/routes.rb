@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'authors/show'
   get 'books/index'
   get 'books/show'
-  root 'static_pages#home'
+  root 'static_pages#log_in'
   get '/signup', to: 'users#new'
   resources :users, only: [:create, :show] do
     resources :books, only: [:new, :create]
