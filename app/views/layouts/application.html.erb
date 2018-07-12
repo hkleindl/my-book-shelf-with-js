@@ -17,10 +17,10 @@
               <%= link_to "MyBookShelf", "#", id: "logo" %>
               <nav>
                 <ul class="navbar nav navbar-nav navbar-right">
-                <% if current_page?(root_path) %>
+                <% if login_page? %>
                     <%= render '/sessions/login_form' %>
 
-                <% elsif !current_page?(root_path) && !current_page?(signup_path) %>
+                <% elsif login_page? && signup_page? %>
 
                   <li><%= link_to "Home", user_path(current_user) %></li>
 
