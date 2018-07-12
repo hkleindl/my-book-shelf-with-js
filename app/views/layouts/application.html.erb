@@ -20,7 +20,7 @@
                 <% if login_page? %>
                     <%= render '/sessions/login_form' %>
 
-                <% elsif login_page? && signup_page? %>
+                <% elsif !login_page? && !signup_page? %>
 
                   <li><%= link_to "Home", user_path(current_user) %></li>
 
