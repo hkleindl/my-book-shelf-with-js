@@ -1,0 +1,20 @@
+<div class="center">
+    <%= flash[:notice] %>
+    <%= flash[:danger] %>
+    
+    <h1 class="">Welcome to MyBookShelf</h1>
+
+    <h3 class="tagline">Keep track of your favorite books and discover new ones</h3> 
+
+    <br></br>
+
+    <%= link_to "Sign Up", signup_path, class: "btn-lg btn-primary" %><br></br>
+
+    <h4>Or</h4><br>
+
+    <%= link_to "Log in with Github", "/auth/github", class: "btn-lg btn-primary", style: "background-color:#660066
+" %>
+</div>
+ 
+
+    

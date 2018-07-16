@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   skip_before_action :logged_in_user, only: [:new, :create]
 
   def new
-    @user = User.new
+    if params[:id].to_i == current_user.id
+      @user = User.new
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def create
