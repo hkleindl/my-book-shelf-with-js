@@ -1,7 +1,7 @@
 <h1><%= flash[:success] %></h1>
 
 <div class="book_list">
-  <h1 class="mybooks">MyBooks</h1>
+  <h1 class="mybooks"><%= link_to "MyBooks", user_books_path(current_user) %></h1>
 
   <div class="scrolling-wrapper">
     <% @my_books.each do |book| %>

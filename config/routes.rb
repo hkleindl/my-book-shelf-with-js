@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
   get '/signup', to: 'users#new'
   resources :users, only: [:create, :show] do
-    resources :books, only: [:new, :create]
+    resources :books, only: [:index, :new, :create, :show]
   end
   resources :books
   resources :sessions, only: [:create]

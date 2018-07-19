@@ -1,8 +1,15 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.order(:name)
-  
+    if params[:user_id]
+      if params[:user_id].to_i == current_user.id
+        @books = @current_user.books
+      else
+        redirect_to user_path(current_user)
+      end
+    else
+      @books = Book.order(:name)
+    end 
   end
 
   def show

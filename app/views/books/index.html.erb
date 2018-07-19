@@ -1,5 +1,9 @@
 
-<h1>All Books</h1>
+<% if params[:user_id] %>
+  <h1>MyBooks</h1>
+<% else %>
+  <h1>All Books</h1>
+<% end %>
 
 <ol>
   <% @books.each do |book| %>
@@ -23,7 +27,7 @@
 </ol>
 <br></br>
 <h3>Don't see the book you're looking for?</h3>
-<%= link_to "Create New Book", new_book_path, class:"btn btn-primary"%>
+<%= link_to "Create New Book", new_user_book_path(current_user), class:"btn btn-primary"%>
 <br></br>
 
 
