@@ -18,7 +18,7 @@
       <p>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></p>
 
       <% if current_user.books.include?(book) %>
-        <p>My Rating: <%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p> 
+        <p>My Rating: <%= pluralize(book.ratings.where(user_id: current_user.id).pluck(:stars)[0], 'star') %></p> 
       <% end %>
       </li> 
     </div> 
