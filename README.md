@@ -5,13 +5,13 @@
 
 * To get started, fork and clone to your machine. Then 
   run:
- - `bundle install` to install gems 
- - `rake db:migrate` to run migrations 
- - `rake db:seed` to populate the database with seed 
+   - `bundle install` to install gems 
+   - `rake db:migrate` to run migrations 
+   - `rake db:seed` to populate the database with seed 
     data 
- - `rails server` to start application 
+   - `rails server` to start application 
   
- - In your internet browser, navigate to 
+   - In your internet browser, navigate to 
    'localhost:3000'
 
 * Contributions are welcome 
