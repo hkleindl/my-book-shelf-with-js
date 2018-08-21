@@ -1,25 +1,19 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Welcome to my-book-shelf
 
-Things you may want to cover:
+* MyBookShelf is a Rails application for keeping track of and rating books you've read
 
-* Ruby version
+* To get started, fork and clone to your machine. Then 
+  run:
+ - `bundle install` to install gems 
+ - `rake db:migrate` to run migrations 
+ - `rake db:seed` to populate the database with seed 
+    data 
+ - `rails server` to start application 
+  
+ - In your internet browser, navigate to 
+   'localhost:3000'
 
-* System dependencies
+* Contributions are welcome 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# my-book-shelf
+* This project is licensed under the MIT open source license

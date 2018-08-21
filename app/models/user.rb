@@ -12,6 +12,9 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 },
                        allow_nil: true
 
+  # validates :password, presence: true,
+  #                      length: { in: 6..20 }                     
+
   def self.find_or_create_by_omniauth(auth_hash)
     oauth_email = auth_hash["info"]["email"]
     oauth_nickname = auth_hash["info"]["nickname"]
