@@ -14,8 +14,10 @@
       <% book.genres.each do |g| %>
         <p><%= link_to g.name, genre_path(g) %></p>
       <% end %>
-      
+
+      <% if !book.ratings.empty? %>
       <p>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></p>
+      <% end %>
 
       <% if current_user.books.include?(book) %>
         <p>My Rating: <%= pluralize(book.ratings.where(user_id: current_user.id).pluck(:stars)[0], 'star') %></p> 
