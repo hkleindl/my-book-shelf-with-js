@@ -6,4 +6,8 @@ class AuthorsController < ApplicationController
   def show
     @author = Author.find_by(id: params[:id])
   end
+
+  def most_books
+    @author = Author.the_most_books
+  end
 end

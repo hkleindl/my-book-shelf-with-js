@@ -30,7 +30,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.users << User.find_by(id: current_user.id)
+    @book.users << current_user
     rating = @book.ratings.find do |rating|
       rating.user_id == params[:user_id].to_i  
     end
