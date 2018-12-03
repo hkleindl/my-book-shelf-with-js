@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.3.6'
 
+gem "rubyzip", ">= 1.2.2"
+gem "loofah", ">= 2.2.3"
+gem "rack", ">= 2.0.6"
 gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-github'
