@@ -1,7 +1,7 @@
 
 # Welcome to my-book-shelf
 
-* MyBookShelf is a Rails application for keeping track of and rating books you've read
+* MyBookShelf is a Rails application for keeping track of and rating books you've read with Javascript functionality
 
 * To get started, fork and clone to your machine. Then 
   run:
