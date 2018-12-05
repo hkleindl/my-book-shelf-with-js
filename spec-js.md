@@ -1,7 +1,6 @@
 # Rails App with JavaScript Frontend Spec
 
 ##Project Specs:
----
 
 - [] Must have a Rails Backend and new requirements implemented through JavaScript.
  
@@ -20,7 +19,6 @@
 - [] At least one of the JS Model Objects must have a method on the prototype.
 
 ##Project Repo Specs:
----
 
 ####Read Me file contains:
 
