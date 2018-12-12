@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find_by(id: params[:id])
     @rating = Rating.find_by(user_id: current_user.id, book_id: @book.id)
+    render json: @book, status: 200
   end
 
   def new

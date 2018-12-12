@@ -13,5 +13,7 @@
           <% if user.books.include?(book) %>
             <p>My Rating: <%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p> 
           <% end %>
+          <button onclick="showStuff(<%=book.id%>)">Click me</button>
+          <div id="<%= book.id %>"></div>
         </div>
   
