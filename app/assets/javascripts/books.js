@@ -6,6 +6,6 @@ function showStuff(bookId, listName) {
   $.get(`/books/${bookId}`, function(resp) {
     // debugger
 
-    $(`#${listName}-${bookId}`).html(resp.id).toggle(100, "swing")
+    $(`#${listName}-${bookId}`).html(`by: <a href="/authors/${resp.author.id}">${resp.author.name}</a>`).toggle(100, "swing")
   })
 }
