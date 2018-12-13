@@ -5,7 +5,7 @@
 
   <div class="scrolling-wrapper">
     <% @my_books.each do |book| %>
-          <%= render partial: "book_list", locals: { book: book, user: @user } %>
+          <%= render partial: "book_list", locals: { book: book, user: @user, list_name: "my-books" } %>
     <% end %>
   </div>
   
@@ -18,7 +18,7 @@
 
   <div class="scrolling-wrapper">
     <% @highly_rated_books.each do |book| %>
-      <%= render partial: "book_list", locals: { book: book, user: @user } %>
+      <%= render partial: "book_list", locals: { book: book, user: @user, list_name: "highly-rated" } %>
     <% end %>
   </div>
 </div>
@@ -29,7 +29,7 @@
 
   <div class="scrolling-wrapper">
     <% @popular_books.each do |book| %>
-      <%= render partial: "book_list", locals: { book: book, user: @user } %>
+      <%= render partial: "book_list", locals: { book: book, user: @user, list_name: "popular" } %>
     <% end %>
   </div>
 </div>

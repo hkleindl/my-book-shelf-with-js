@@ -2,10 +2,10 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-function showStuff(bookId) {
+function showStuff(bookId, listName) {
   $.get(`/books/${bookId}`, function(resp) {
     // debugger
 
-    $(`#${bookId}`).html(resp.id).toggle(100, "swing")
+    $(`#${listName}-${bookId}`).html(resp.id).toggle(100, "swing")
   })
 }

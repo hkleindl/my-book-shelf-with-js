@@ -1,19 +1,19 @@
 
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIySURBVHhe7ZtBSsRAEEUHBC+h7gS9g15PBW/gFUTciQdQN97DjaCgHkCrBguaIpmUlRe61X7wwbTJ/396JkU2WXU6nU6APdGV6F302bCeRGeibRGGfvgX0VBgq9JNwNBvXk1vRDu60DBHIu2qvwSMD5Ga7q6P2sd+BRje8EFka/e68I2ul8e18H1n4w3vRLamfxv+vFrgPaKGeHASvEfUEA9OgveIGuLBSfAe3nBsCOo8KGdCLXzf2XjDsSHYCr7vbHDDham2Af/mOWAMPDgJ3sMbjg1Bf14t8B7ecGwI+vNqgfeIGuLBSfAeUUM8OAneI2qIByfBe3jDPgRFtvaTIVhu3JTKjR26btPzhp2DETWcOq/cuCmVGzt0Xfl/j52DETXEg5PgPaKGeHASvIc3pIZgdiZMYddgeMPynizvRX/eFEP39pg23fMeuwYjaogHJ8F7RA3x4CR4j6ghHpwE7+EN+5OgyNbmDMGlwHtEDfHgJHiPqCEenATvETXEg5PgPbxhH4IiW+tDsAAPToL3iBriwUnwHlFDPDgJ3sMb9iEosrU+BAvw4CR4j6ghHpwE7xE1xIOT4D28YR+CIlvrQ7AAD06C94ga4sEJjkXa4Xl9BGEf7EKkxnbcss5FGEMBLUs//JYIw4wfRYe60CjWE8eM99dH7bLYBvyWFyYW24BrkRrfivT9oRax6Y++KmMciF5FtsMt60S0CPrNX4reREPBtaXf/KkIfV2u0+n8dVarL/Z3lsXjd9snAAAAAElFTkSuQmCC">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIySURBVHhe7ZtBSsRAEEUHBC+h7gS9g15PBW/gFUTciQdQN97DjaCgHkCrBguaIpmUlRe61X7wwbTJ/396JkU2WXU6nU6APdGV6F302bCeRGeibRGGfvgX0VBgq9JNwNBvXk1vRDu60DBHIu2qvwSMD5Ga7q6P2sd+BRje8EFka/e68I2ul8e18H1n4w3vRLamfxv+vFrgPaKGeHASvEfUEA9OgveIGuLBSfAe3nBsCOo8KGdCLXzf2XjDsSHYCr7vbHDDham2Af/mOWAMPDgJ3sMbjg1Bf14t8B7ecGwI+vNqgfeIGuLBSfAeUUM8OAneI2qIByfBe3jDPgRFtvaTIVhu3JTKjR26btPzhp2DETWcOq/cuCmVGzt0Xfl/j52DETXEg5PgPaKGeHASvIc3pIZgdiZMYddgeMPynizvRX/eFEP39pg23fMeuwYjaogHJ8F7RA3x4CR4j6ghHpwE7+EN+5OgyNbmDMGlwHtEDfHgJHiPqCEenATvETXEg5PgPbxhH4IiW+tDsAAPToL3iBriwUnwHlFDPDgJ3sMb9iEosrU+BAvw4CR4j6ghHpwE7xE1xIOT4D28YR+CIlvrQ7AAD06C94ga4sEJjkXa4Xl9BGEf7EKkxnbcss5FGEMBLUs//JYIw4wfRYe60CjWE8eM99dH7bLYBvyWFyYW24BrkRrfivT9oRax6Y++KmMciF5FtsMt60S0CPrNX4reREPBtaXf/KkIfV2u0+n8dVarL/Z3lsXjd9snAAAAAElFTkSuQmCC">
         
       
 
-        <div class="card">
-          <h3><%= link_to book.name, book_path(book) %></h3>
-          <p>by: <%= link_to book.author_name, author_path(book.author) %></p>
-          <% book.genres.each do |g| %>
-            <p><%= link_to g.name, genre_path(g) %></p>
-          <% end %> 
-          <p>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></p>
-          <% if user.books.include?(book) %>
-            <p>My Rating: <%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p> 
-          <% end %>
-          <button onclick="showStuff(<%=book.id%>)">Click me</button>
-          <div id="<%= book.id %>"></div>
-        </div>
+<div class="card">
+  <h3><%= link_to book.name, book_path(book) %></h3>
+    <p>by: <%= link_to book.author_name, author_path(book.author) %></p>
+      <% book.genres.each do |g| %>
+        <p><%= link_to g.name, genre_path(g) %></p>
+      <% end %> 
+    <p>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></p>
+      <% if user.books.include?(book) %>
+        <p>My Rating: <%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p> 
+      <% end %>
+    <button onclick="showStuff(<%=book.id%>, '<%=list_name%>')">Click me</button>
+  <div style="display: none" id="<%= list_name %>-<%= book.id %>"></div>
+</div>
   
