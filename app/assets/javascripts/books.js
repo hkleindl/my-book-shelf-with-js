@@ -1,6 +1,9 @@
-// # Place all the behaviors and hooks related to the matching controller here.
-// # All this logic will automatically be available in application.js.
-// # You can use CoffeeScript in this file: http://coffeescript.org/
+function Book(attributes) {
+  this.id = attributes.id
+  this.name = attributes.name
+  this.author = attributes.author
+  this.averageStarRating = attributes.average_star_rating
+}
 
 function showStuff(bookId, listName) {
   $.get(`/books/${bookId}`, function(resp) {
