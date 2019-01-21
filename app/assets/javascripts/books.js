@@ -6,9 +6,7 @@ function Book(attributes) {
 }
 
 function showStuff(bookId, listName) {
-  $.get(`/books/${bookId}`, function(resp) {
-    // debugger
-
+  $.getJSON(`/books/${bookId}`, function(resp) {
     $(`#${listName}-${bookId}`).html(
         `by: <a href="/authors/${resp.author.id}">${resp.author.name}</a><br>
          Average User Rating: ${resp.average_star_rating} stars`
