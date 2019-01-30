@@ -3,6 +3,7 @@
 <%= flash[:notice] %>
 
 <h3>By: <%= link_to @book.author_name, author_path(@book.author) %></h3><br>
+
   <h4>Genres:</h4>
   <ul>
     <% @book.genres.each do |g| %>
@@ -16,3 +17,12 @@
     <%= link_to "Edit My Rating", edit_rating_path(@rating), class: "btn btn-warning" %>  
     <%= link_to "Delete My Rating", rating_path(@rating), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
   <% end %>  
+
+  <h4>Other User Ratings</h4>
+  <div id="prev" class="ratings-list btn btn-primary btn-sm">&lt</div>
+
+  <div id="list" class="ratings-list"></div>
+
+  <div id="next" class="ratings-list btn btn-primary btn-sm">&gt</div>
+
+
