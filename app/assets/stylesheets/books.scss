@@ -25,3 +25,20 @@ img {
   margin-top: -90px;
 }
 
+.ratings-list {
+  display: inline;
+}
+
+.ratings-grid {
+  display: grid;
+  grid-template-columns: 30px 175px 30px 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-items: center;
+  align-items: start;
+}
+
+
+
+
