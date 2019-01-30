@@ -1,21 +1,19 @@
 $(function() {
-  var myJson; 
-  $.getJSON('/books/1', function(r) {
-    myJson = r;
-  
-    var ratingsList = myJson.ratings
+  $.getJSON('/books/1', function(resp) {
+    
+    var ratingsList = resp.ratings;
+    var i = 0;
 
-    var i = 0
-    $('#list').html(`${ratingsList[0].user_name} - ${ratingsList[0].stars} stars`)
+    $('#list').html(`${ratingsList[0].user_name} - ${ratingsList[0].stars} stars`);
 
     $('#prev').on('click', function(e) {
       e.preventDefault;
-      $('#list').html(prevItem())
+      $('#list').html(prevItem());
     })
 
     $('#next').on('click', function(e) {
       e.preventDefault;
-      $('#list').html(nextItem())
+      $('#list').html(nextItem());
     })
 
     function prevItem() {
@@ -23,13 +21,13 @@ $(function() {
         i = ratingsList.length;
       }
       i--;
-      return `${ratingsList[i].user_name} - ${ratingsList[i].stars} stars`
+      return `${ratingsList[i].user_name} - ${ratingsList[i].stars} stars`;
     }
 
     function nextItem() {
       i++;
-      i = i % ratingsList.length
-      return `${ratingsList[i].user_name} - ${ratingsList[i].stars} stars`
+      i = i % ratingsList.length;
+      return `${ratingsList[i].user_name} - ${ratingsList[i].stars} stars`;
     }
   })
 });
