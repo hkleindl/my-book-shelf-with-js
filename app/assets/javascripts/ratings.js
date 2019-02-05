@@ -1,5 +1,6 @@
 $(function() {
-  $.getJSON('/books/1', function(resp) {
+  let bookID = $('h1').data('id')
+  $.getJSON(`/books/${bookID}`, function(resp) {
     
     var ratingsList = resp.ratings;
     var i = 0;
