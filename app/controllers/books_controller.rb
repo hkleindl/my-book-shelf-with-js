@@ -18,7 +18,7 @@ class BooksController < ApplicationController
     # render json: @book, status: 200
 
     respond_to do |f|
-      f.html
+      f.html 
       f.json { render json: @book, status: 200 }
     end
   end

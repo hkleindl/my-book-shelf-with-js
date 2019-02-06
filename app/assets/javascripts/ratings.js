@@ -1,4 +1,9 @@
 $(function() {
+
+  $.ajaxSetup({
+    cache:false
+  });
+
   let bookID = $('h1').data('id')
   $.getJSON(`/books/${bookID}`, function(resp) {
     
