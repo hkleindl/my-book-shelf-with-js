@@ -12,7 +12,22 @@
   </ul>
 
   <% if !current_user.books.include?(Book.find_by(id: @book.id)) %>
-    <%= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => @book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %>
+    <div id="rate-book" class="btn btn-primary">Rate Book</div>
+    <div id="rating-form" style="display:none">
+      <%= form_for @rating do |f| %>
+
+        <%= f.hidden_field :user_id, value: session[:user_id] %>
+        <%= f.hidden_field :book_id, value: @book.id %>
+        <%= f.label :stars %>
+        <%= f.number_field :stars %>
+        <%= f.submit "Add to MyBooks" %>
+      <% end %>
+    </div>
+    <%
+=begin%>
+ <%= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => @book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %> 
+<%
+=end%>
   <% else %>
     <%= link_to "Edit My Rating", edit_rating_path(@rating), class: "btn btn-warning" %>  
     <%= link_to "Delete My Rating", rating_path(@rating), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
