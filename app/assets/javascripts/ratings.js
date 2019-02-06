@@ -4,6 +4,11 @@ $(function() {
     cache:false
   });
 
+  $('#rate-book').on('click', function(e) {
+    e.preventDefault;
+    $('#rating-form').toggle();
+  })
+
   let bookID = $('h1').data('id')
   $.getJSON(`/books/${bookID}`, function(resp) {
     

@@ -12,14 +12,14 @@
   </ul>
 
   <% if !current_user.books.include?(Book.find_by(id: @book.id)) %>
-    <div id="rate-book" class="btn btn-primary">Rate Book</div>
+    <div id="rate-book" class="btn btn-primary">Rate Book</div><br></br>
     <div id="rating-form" style="display:none">
-      <%= form_for @rating do |f| %>
+      <%= form_for Rating.new do |f| %>
 
         <%= f.hidden_field :user_id, value: session[:user_id] %>
         <%= f.hidden_field :book_id, value: @book.id %>
         <%= f.label :stars %>
-        <%= f.number_field :stars %>
+        <%= f.number_field :stars, in: 1..5 %>
         <%= f.submit "Add to MyBooks" %>
       <% end %>
     </div>
