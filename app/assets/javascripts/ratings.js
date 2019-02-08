@@ -1,4 +1,4 @@
-$(function() {
+$(document ).on('turbolinks:load', function() {
 
   $.ajaxSetup({
     cache:false
