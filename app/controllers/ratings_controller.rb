@@ -7,6 +7,7 @@ class RatingsController < ApplicationController
 
   def create
     @rating = Rating.new(rating_params)
+    # render json: @rating, status: 201
     if @rating.save
       redirect_to user_path(@rating.user_id)
     else

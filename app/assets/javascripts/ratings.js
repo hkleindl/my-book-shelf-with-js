@@ -5,8 +5,31 @@ $(function() {
   });
 
   $('#rate-book').on('click', function(e) {
-    e.preventDefault;
+    e.preventDefault();
     $('#rating-form').toggle();
+  })
+
+  $('#new_rating').submit(function(e) {
+    e.preventDefault();
+    let formData = $(this)
+    $.ajax({
+      type: 'POST',
+      url: this.action,
+      data: $(this).serialize(),
+      success: function(r) {
+        alert(r)
+      },
+      error: function(x, y, z) {
+        alert(z);
+      }
+
+    })
+
+    // let rating = $.post('/ratings', formData)
+    // debugger
+    // rating.done(function(data) {
+    //   $.getJSON('/books/1')
+    // })
   })
 
   let bookID = $('h1').data('id')
