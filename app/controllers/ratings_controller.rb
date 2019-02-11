@@ -7,13 +7,18 @@ class RatingsController < ApplicationController
 
   def create
     @rating = Rating.new(rating_params)
-    # render json: @rating, status: 201
-    if @rating.save
-      redirect_to user_path(@rating.user_id)
-    else
-      flash[:notice] = @rating.errors.full_messages
-      redirect_to book_path(@rating.book)
-    end
+    render json: @rating, status: 201
+    # if @rating.save
+    
+    #   TODO: 1. Replace form with edit and delete buttons 
+    #         2. Append rating to book json
+    #         3. Render newly added rating in rating list
+
+    #   redirect_to user_path(@rating.user_id)
+    # else
+    #   flash[:notice] = @rating.errors.full_messages
+    #   redirect_to book_path(@rating.book)
+    # end
   end
 
   def edit

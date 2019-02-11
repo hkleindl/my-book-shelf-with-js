@@ -9,34 +9,50 @@ $(document).on('turbolinks:load', function() {
     $('#rating-form').toggle();
   })
 
-  $('#new_rating').submit(function(e) {
-    e.preventDefault();
-    let formData = $(this)
-    $.ajax({
-      type: 'POST',
-      url: this.action,
-      data: $(this).serialize(),
-      success: function(r) {
-        alert(r)
-      },
-      error: function(x, y, z) {
-        alert(z);
-      }
-
-    })
-
-    // let rating = $.post('/ratings', formData)
-    // debugger
-    // rating.done(function(data) {
-    //   $.getJSON('/books/1')
+  // $('#new_rating').submit(function(e) {
+  //   e.preventDefault();
+  //   let formData = $(this).serialize();
+    // $.ajax({
+    //   type: 'POST',
+    //   url: this.action,
+    //   data: $(this).serialize(),
+    //   success: function(rating) {
+    //     debugger
+    //   }
     // })
-  })
+
+  //   let rating = $.post('/ratings', formData)
+  //   rating.done(function(data) {
+  //     debugger
+  //     $.getJSON('/books/1')
+  //   })
+  // })
 
   let bookID = $('h1').data('id')
   $.getJSON(`/books/${bookID}`, function(resp) {
     
     var ratingsList = resp.ratings;
     var i = 0;
+
+    $('#new_rating').submit(function(e) {
+      e.preventDefault();
+      let formData = $(this).serialize();
+      // $.ajax({
+      //   type: 'POST',
+      //   url: this.action,
+      //   data: $(this).serialize(),
+      //   success: function(rating) {
+      //     debugger
+      //   }
+      // })
+  
+      let rating = $.post('/ratings', formData)
+      rating.done(function(r) {
+      //  debugger
+       $('#list').html(`${r.user_name} - ${r.stars} stars`)
+        
+      })
+    })
 
     $('#list').html(`${ratingsList[0].user_name} - ${ratingsList[0].stars} stars`);
 

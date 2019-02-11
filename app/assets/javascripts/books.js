@@ -1,8 +1,11 @@
-function Book(attributes) {
-  this.id = attributes.id
-  this.name = attributes.name
-  this.author = attributes.author
-  this.averageStarRating = attributes.average_star_rating
+class Book {
+  constructor(attributes) {
+    this.id = attributes.id
+    this.name = attributes.name
+    this.author = attributes.author
+    this.ratings = attributes.ratings
+    this.averageStarRating = attributes.average_star_rating
+  }
 }
 
 function showDetails(bookId, listName) {
