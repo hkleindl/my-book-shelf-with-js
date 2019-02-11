@@ -6,27 +6,44 @@ class Book {
     this.ratings = attributes.ratings
     this.averageStarRating = attributes.average_star_rating
   }
+
+  renderRatings() {
+    $.each(this, rating => $('#list').append(rating))
+  }
+
+  renderLastRating() {
+    let ratingsList = this.ratings
+    let lastRating = ratingsList[ratingsList.length - 1]
+    let string = `${lastRating.user_name} - ${lastRating.stars} star`
+    if (lastRating.stars !== 1) {
+      string += 's'
+    } 
+    $('#list').html(string)
+  }
+
+  static ready() {
+    let bookId = $('h1').data('id');
+    let book;
+    $.getJSON(`/books/${bookId}`, function(r) {
+      book = new Book(r)
+      book.renderLastRating();
+    })
+  }
+  
 }
+
+$(document).on('turbolinks:load', function() {
+
+  Book.ready();
+
+  $.ajaxSetup({
+    cache:false
+  });
+
 
 function showDetails(bookId, listName) {
   showStuff(bookId, listName);
 }
-
-// function currentUserRating(bookId, listName) {
-//   $.getJSON(`/books/${bookId}`, function(resp) {
-//     var rating = resp.ratings.filter(function(r) {
-//       return r.user_id === $('#user-id').data('user-id')
-//     })
-//     debugger
-//     $(`#${listName}-${bookId}`).html(`My Rating: ${rating[0].stars}`).toggle(100, "swing")
-//     alert(rating[0].stars)
-//   })
-// }
-
-// $.getJSON('/books/1', function(r) {
-//   r1 = r.ratings.filter(e => e.user_id === 1)
-// })
-// r1[0]
 
 function showStuff(bookId, listName) {
   $.getJSON(`/books/${bookId}`, function(resp) {
@@ -36,3 +53,5 @@ function showStuff(bookId, listName) {
       ).toggle(100, "swing")
   })
 }
+
+})
