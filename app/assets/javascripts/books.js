@@ -12,12 +12,12 @@ class Book {
     let ratingsList = this.ratings
 
     $('#prev').on('click', function(e) {
-      e.preventDefault;
+      e.preventDefault();
       $('#list').html(prevItem());
     })
 
     $('#next').on('click', function(e) {
-      e.preventDefault;
+      e.preventDefault();
       $('#list').html(nextItem());
     })
 
@@ -26,25 +26,24 @@ class Book {
         i = ratingsList.length;
       }
       i--;
-      return `${ratingsList[i].user_name} - ${ratingsList[i].stars} stars`;
+      let previous = formatRatingString(ratingsList[i].user_name, ratingsList[i].stars);
+      return previous;
     }
 
     function nextItem() {
       i++;
       i = i % ratingsList.length;
-      return `${ratingsList[i].user_name} - ${ratingsList[i].stars} stars`;
+      let next = formatRatingString(ratingsList[i].user_name, ratingsList[i].stars);
+      return next;
     }
   }
 
   renderLastRating() {
     let ratingsList = this.ratings
     let lastRating = ratingsList[ratingsList.length - 1]
-    let string = `${lastRating.user_name} - ${lastRating.stars} star`
-    if (lastRating.stars !== 1) {
-      string += 's'
-    } 
-    $('#list').html(string)
+    $('#list').html(formatRatingString(lastRating.user_name, lastRating.stars))
   }
+
 
   static ready() {
     let bookId = $('h1').data('id');
@@ -58,6 +57,16 @@ class Book {
   
 }
 
+function formatRatingString(userName, stars) {
+  let string = `${userName} - ${stars} star`
+  if (stars !== 1) {
+    string += 's'
+  } 
+  return string;
+}
+
+
+
 $(document).on('turbolinks:load', function() {
 
   Book.ready();
@@ -66,18 +75,18 @@ $(document).on('turbolinks:load', function() {
     cache:false
   });
 
+  
+  function showDetails(bookId, listName) {
+    showStuff(bookId, listName);
+  }
 
-function showDetails(bookId, listName) {
-  showStuff(bookId, listName);
-}
-
-function showStuff(bookId, listName) {
-  $.getJSON(`/books/${bookId}`, function(resp) {
-    $(`#${listName}-${bookId}`).html(
-        `by: <a href="/authors/${resp.author.id}">${resp.author.name}</a><br>
-         Average User Rating: ${resp.average_star_rating} stars`
-      ).toggle(100, "swing")
-  })
-}
+  function showStuff(bookId, listName) {
+    $.getJSON(`/books/${bookId}`, function(resp) {
+      $(`#${listName}-${bookId}`).html(
+          `by: <a href="/authors/${resp.author.id}">${resp.author.name}</a><br>
+          Average User Rating: ${resp.average_star_rating} stars`
+        ).toggle(100, "swing")
+    })
+  }
 
 })
