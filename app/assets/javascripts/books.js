@@ -47,12 +47,14 @@ class Book {
 
   static ready() {
     let bookId = $('h1').data('id');
-    let book;
-    $.getJSON(`/books/${bookId}`, function(r) {
-      book = new Book(r)
-      book.renderLastRating();
-      book.renderRatings();
-    })
+    if (bookId) {
+      let book;
+      $.getJSON(`/books/${bookId}`, function(r) {
+        book = new Book(r)
+        book.renderLastRating();
+        book.renderRatings();
+      })
+    }
   }
   
 }
@@ -68,9 +70,10 @@ function formatRatingString(userName, stars) {
 
 
 $(document).on('turbolinks:load', function() {
-
+    
   Book.ready();
 
+  
   $.ajaxSetup({
     cache:false
   });

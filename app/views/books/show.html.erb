@@ -1,53 +1,48 @@
-<h1 data-id="<%= @book.id %>"><%= @book.name %></h1>
+  <h1 data-id="<%= @book.id %>"><%= @book.name %></h1>
 
-<%= flash[:notice] %>
+  <%= flash[:notice] %>
 
-<h3>By: <%= link_to @book.author_name, author_path(@book.author) %></h3><br>
+  <h3>By: <%= link_to @book.author_name, author_path(@book.author) %></h3><br>
 
-  <h4>Genres:</h4>
-  <ul>
-    <% @book.genres.each do |g| %>
-      <li><%= link_to g.name, genre_path(g) %></li>
-    <% end %>
-  </ul>
-
-  <% if !current_user.books.include?(Book.find_by(id: @book.id)) %>
-    <div id="rate-book" class="btn btn-primary">Rate Book</div><br></br>
-    <div id="rating-form" >
-      <%= form_for @rating do |f| %>
-
-        <%= f.hidden_field :user_id, value: session[:user_id] %>
-        <%= f.hidden_field :book_id, value: @book.id %>
-        <%= f.label :stars %>
-        <%= f.number_field :stars, in: 1..5 %>
-        <%= f.submit "Submit" %>
+    <h4>Genres:</h4>
+    <ul>
+      <% @book.genres.each do |g| %>
+        <li><%= link_to g.name, genre_path(g) %></li>
       <% end %>
-    </div>
-    <%
-=begin%>
- <%= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => @book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %> 
-<%
-=end%>
-  <%
-=begin%>
- <% else %>
-    
- <%= link_to "Edit My Rating", edit_rating_path(@rating), class: "btn btn-warning" %>   
+    </ul>
 
-    <%= link_to "Delete My Rating", rating_path(@rating), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %> 
-<%
-=end%>
-  <% end %>  
+    <% if !current_user.books.include?(Book.find_by(id: @book.id)) %>
+      <div id="rate-book" class="btn btn-primary">Rate Book</div><br></br>
+      <div id="rating-form" >
+        <%= form_for @rating do |f| %>
+
+          <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.hidden_field :book_id, value: @book.id %>
+          <%= f.label :stars %>
+          <%= f.number_field :stars, in: 1..5 %>
+          <%= f.submit "Submit" %>
+        <% end %>
+      </div>
+      
+  <%#= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => @book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %> 
+  
+  <%# else %>
+      
+  <%#= link_to "Edit My Rating", edit_rating_path(@rating), class: "btn btn-warning" %>   
+
+      <%#= link_to "Delete My Rating", rating_path(@rating), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %> 
+  
+    <% end %>  
 
   <h4>Other User Ratings</h4>
 
-<div class="ratings-grid">
-  <div id="prev" class="ratings-list btn btn-primary btn-sm">&lt</div>
+  <div class="ratings-grid">
+    <div id="prev" class="ratings-list btn btn-primary btn-sm">&lt</div>
 
-  <div id="list" class="ratings-list"></div>
-  
-  <div id="next" class="ratings-list btn btn-primary btn-sm">&gt</div>  
-</div>
+    <div id="list" class="ratings-list"></div>
+    
+    <div id="next" class="ratings-list btn btn-primary btn-sm">&gt</div>  
+  </div>
 
   
 
