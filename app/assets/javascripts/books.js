@@ -50,6 +50,7 @@ class Book {
       let formData = $(this).serialize();
       let rating = $.post('/ratings', formData)
       rating.done(function(r) {
+      //   alert("Rating saved!")
        $('#list').html(`${r.user_name} - ${r.stars} stars`)
       })
     })
@@ -63,6 +64,7 @@ class Book {
         book = new Book(r)
         book.renderLastRating();
         book.renderRatings();
+        book.createRating();
       })
     }
   }
@@ -79,7 +81,7 @@ function formatRatingString(userName, stars) {
 
 
 $(document).on('turbolinks:load', function() {
-    
+
   Book.ready();
 
   

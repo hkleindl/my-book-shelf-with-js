@@ -9,13 +9,13 @@ class RatingsController < ApplicationController
     @book = Book.find(params[:rating][:book_id])
     @rating = @book.ratings.build(rating_params)
     if @rating.save
-      render json: @rating, status: 201
-      # respond_to do |f|
-      #   f.html {redirect_to user_path(@rating.user_id)}
-      #   f.json {render :json => @rating, status: 201}
-      # end
+      respond_to do |f|
+        f.json {render :json => @rating, status: 201}
+        f.html {redirect_to user_path(@rating.user_id)}
+      end
     
-    #   TODO: 1. Replace form with edit and delete buttons 
+    #   TODO: FIX - Form submit renders json rating???
+    #         1. Replace form with edit and delete buttons 
     #         2. Append rating to book json
     #         3. Render newly added rating in rating list
 
