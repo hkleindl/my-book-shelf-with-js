@@ -44,6 +44,16 @@ class Book {
     $('#list').html(formatRatingString(lastRating.user_name, lastRating.stars))
   }
 
+  createRating() {
+    $('#new_rating').submit(function(e) {
+      e.preventDefault();
+      let formData = $(this).serialize();
+      let rating = $.post('/ratings', formData)
+      rating.done(function(r) {
+       $('#list').html(`${r.user_name} - ${r.stars} stars`)
+      })
+    })
+  }
 
   static ready() {
     let bookId = $('h1').data('id');
@@ -56,7 +66,6 @@ class Book {
       })
     }
   }
-  
 }
 
 function formatRatingString(userName, stars) {
