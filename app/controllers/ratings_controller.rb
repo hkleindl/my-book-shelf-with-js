@@ -6,7 +6,8 @@ class RatingsController < ApplicationController
   end
 
   def create
-    @rating = Rating.new(rating_params)
+    @book = Book.find(params[:rating][:book_id])
+    @rating = @book.ratings.build(rating_params)
     if @rating.save
       render json: @rating, status: 201
       # respond_to do |f|
