@@ -13,13 +13,6 @@ class RatingsController < ApplicationController
         f.json {render :json => @rating, status: 201}
         f.html {redirect_to user_path(@rating.user_id)}
       end
-    
-    #   TODO: x FIX - Form submit renders json rating???
-    #         1. Replace form with edit and delete buttons 
-    #       x 2. Append rating to book json
-    #       x 3. Render newly added rating in rating list
-
-    #   redirect_to user_path(@rating.user_id)
     else
       flash[:notice] = @rating.errors.full_messages
       redirect_to book_path(@rating.book)
