@@ -14,10 +14,8 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by(id: params[:id])
-    # @rating = Rating.new
-
     if current_user.books.include?(@book)
-      @rating = Rating.where("user_id = ? AND book_id = ?", current_user.id, @book.id)
+      @rating = Rating.where("user_id = ? AND book_id = ?", current_user.id, @book.id).pluck(:id)[0]
     else
       @rating = Rating.new
     end
