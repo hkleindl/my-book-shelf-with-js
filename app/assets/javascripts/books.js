@@ -50,8 +50,12 @@ class Book {
       let formData = $(this).serialize();
       let rating = $.post('/ratings', formData)
       rating.done(function(r) {
-      //   alert("Rating saved!")
-       $('#list').html(`${r.user_name} - ${r.stars} stars`)
+        let book;
+        $.getJSON(`/books/${r.book_id}`, function(r) {
+          book = new Book(r)
+          book.renderLastRating();
+          book.renderRatings();
+        })
       })
     })
   }

@@ -14,10 +14,10 @@ class RatingsController < ApplicationController
         f.html {redirect_to user_path(@rating.user_id)}
       end
     
-    #   TODO: FIX - Form submit renders json rating???
+    #   TODO: x FIX - Form submit renders json rating???
     #         1. Replace form with edit and delete buttons 
-    #         2. Append rating to book json
-    #         3. Render newly added rating in rating list
+    #       x 2. Append rating to book json
+    #       x 3. Render newly added rating in rating list
 
     #   redirect_to user_path(@rating.user_id)
     else
