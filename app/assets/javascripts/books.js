@@ -49,12 +49,15 @@ class Book {
       e.preventDefault();
       let formData = $(this).serialize();
       let rating = $.post('/ratings', formData)
-      rating.done(function(r) {
+      rating.done(function(rating) {
         let book;
-        $.getJSON(`/books/${r.book_id}`, function(r) {
-          book = new Book(r)
+        $.getJSON(`/books/${rating.book_id}`, function(json) {
+          book = new Book(json)
           book.renderLastRating();
           book.renderRatings();
+          let ratingId = book.ratings[book.ratings.length - 1].id
+          $('#rating-form').html("")
+          $('#edit-rating').html(`<a class="btn btn-warning" href="/ratings/${ratingId}/edit">Edit My Rating</a> <a data-confirm="Are you sure?" class="btn btn-danger" rel="nofollow" data-method="delete" href="/ratings/${ratingId}">Delete My Rating</a>`)
         })
       })
     })
