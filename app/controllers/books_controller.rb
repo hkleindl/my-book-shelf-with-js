@@ -14,7 +14,13 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by(id: params[:id])
-    @rating = Rating.new
+    # @rating = Rating.new
+
+    if current_user.books.include?(@book)
+      @rating = Rating.where("user_id = ? AND book_id = ?", current_user.id, @book.id)
+    else
+      @rating = Rating.new
+    end
 
     respond_to do |f|
       f.html 

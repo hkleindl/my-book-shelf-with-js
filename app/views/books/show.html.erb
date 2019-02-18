@@ -11,6 +11,7 @@
       <% end %>
     </ul>
 
+    <%# render new rating partial %>
     <% if !current_user.books.include?(Book.find_by(id: @book.id)) %>
       <div id="rate-book" class="btn btn-primary">Rate Book</div><br></br>
       <div id="rating-form" >
@@ -20,17 +21,17 @@
           <%= f.hidden_field :book_id, value: @book.id %>
           <%= f.label :stars %>
           <%= f.number_field :stars, in: 1..5 %>
-          <%= f.submit "Submit" %>
+          <%= f.submit "Rate Book" %>
         <% end %>
       </div>
       
   <%#= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => @book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %> 
   
-  <%# else %>
+  <% else %>
       
-  <%#= link_to "Edit My Rating", edit_rating_path(@rating), class: "btn btn-warning" %>   
+  <%= link_to "Edit My Rating", edit_rating_path(@rating), class: "btn btn-warning" %>   
 
-      <%#= link_to "Delete My Rating", rating_path(@rating), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %> 
+      <%= link_to "Delete My Rating", rating_path(@rating), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %> 
   
     <% end %>  
 
