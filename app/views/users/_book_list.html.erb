@@ -12,7 +12,12 @@
       <% if user.books.include?(book) %>
         <p>My Rating: <%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p> 
       <% end %>
-    <button onclick="showDetails(<%=book.id%>, '<%=list_name%>')">Click me</button>
-  <div style="display: none" id="<%= list_name %>-<%= book.id %>"></div>
+    <div class="book-button"
+    data-book-id="<%= book.id %>">  
+      <button onclick="showStuff(<%= book.id %>,'<%= list_name %>')">Click me</button>
+    </div>
+  <div style="display: none" id="<%= list_name %>-<%= book.id %>">
+    
+  </div>
 </div>
   
