@@ -5,6 +5,7 @@ class Book {
     this.author = attributes.author
     this.ratings = attributes.ratings
     this.averageStarRating = attributes.average_star_rating
+    this.genres = attributes.genres
   }
 
   renderRatings() {
@@ -94,31 +95,16 @@ $(document).on('turbolinks:load', function() {
     cache:false
   });
 
-  // $('.book-button').on('click', function(e) {
-  //   e.preventDefault();
-  //   // debugger
-  //   var bookId = $(this).data('book-id')
-  //   this.nextElementSibling.html($.getJSON(`/books/${bookId}`, function(resp) {
-  //     return resp.id
-  //   })).toggle(100, "swing")
-  // })
-
-  
-  function showDetails(bookId, listName) {
-    showStuff(bookId, listName);
-  }
-
-  
-
 })
 
-function showStuff(bookId, listName) {
+function showDetails(bookId, listName) {
   $.getJSON(`/books/${bookId}`, function(resp) {
+    // debugger
     var html = ""
     html += `<p>by: <a href="/authors/${resp.author.id}">${resp.author.name}</a></p><p>Average User Rating: ${resp.average_star_rating} stars</p>`
 
-    $.each(resp.ratings, function(i, e) {
-      html += (`${e.user_name}${e.stars}<br>`)
+    $.each(resp.genres, function(i, e) {
+      html += (`<a href="/genres/${e.id}">${e.name}</a><br>`)
     })
     $(`#${listName}-${bookId}`).html(html).toggle(100, "swing")
   })

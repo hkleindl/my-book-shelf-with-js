@@ -4,20 +4,16 @@
       
 <div class="card">
   <h3><%= link_to book.name, book_path(book) %></h3>
-    <p>by: <%= link_to book.author_name, author_path(book.author) %></p>
-      <% book.genres.each do |g| %>
-        <p><%= link_to g.name, genre_path(g) %></p>
-      <% end %> 
-    <p>Average User Rating: <%= pluralize(book.average_star_rating, 'star') %></p>
       <% if user.books.include?(book) %>
         <p>My Rating: <%= pluralize(book.ratings.where(user_id: params[:id]).pluck(:stars)[0], 'star') %></p> 
       <% end %>
+      
     <div class="book-button"
-    data-book-id="<%= book.id %>">  
-      <button onclick="showStuff(<%= book.id %>,'<%= list_name %>')">Click me</button>
-    </div>
+    data-book-id="<%= book.id %>"> 
+      <button onclick="showDetails(<%= book.id %>,'<%= list_name %>')">Details</button>
+    </div><br>
   <div style="display: none" id="<%= list_name %>-<%= book.id %>">
-    
+
   </div>
 </div>
   
