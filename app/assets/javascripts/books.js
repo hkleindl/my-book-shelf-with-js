@@ -87,25 +87,46 @@ function formatRatingString(userName, stars) {
 }
 
 $(document).on('turbolinks:load', function() {
-
+  
   Book.ready();
-
   
   $.ajaxSetup({
     cache:false
   });
 
+  $('.book-button').on('mouseenter', function() {
+    var htmlStr = ""
+    $.getJSON(`/books/${$(this).data('book-id')
+  }`, function(resp) {
+      htmlStr += `<h4><a href="/books/${resp.id}">${resp.name}</a></h4>
+      <p>by: <a href="/authors/${resp.author.id}">${resp.author.name}</a></p>
+      <p>Average User Rating: ${resp.average_star_rating} stars</p>`
+
+      $.each(resp.genres, function(i, e) {
+        htmlStr += (`<a href="/genres/${e.id}">${e.name}</a><br>`)
+      })
+      
+      $(`[data-book-id='${resp.id}']`).popover({
+        container: 'body',
+        html: true,
+        content: htmlStr
+        }
+      )
+    }) 
+  })
+
+  
 })
 
-function showDetails(bookId, listName) {
-  $.getJSON(`/books/${bookId}`, function(resp) {
-    // debugger
-    var html = ""
-    html += `<p>by: <a href="/authors/${resp.author.id}">${resp.author.name}</a></p><p>Average User Rating: ${resp.average_star_rating} stars</p>`
 
-    $.each(resp.genres, function(i, e) {
-      html += (`<a href="/genres/${e.id}">${e.name}</a><br>`)
-    })
-    $(`#${listName}-${bookId}`).html(html).toggle(100, "swing")
-  })
-}
+
+
+
+
+
+
+
+
+
+
+

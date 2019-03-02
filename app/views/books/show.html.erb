@@ -11,7 +11,6 @@
       <% end %>
     </ul>
 
-    <%# render new rating partial %>
     <% if !current_user.books.include?(Book.find_by(id: @book.id)) %>
       <div id="rating-form" >
         <%= form_for @rating do |f| %>
@@ -24,8 +23,6 @@
         <% end %>
       </div>
       
-  <%#= link_to "Add to MyBooks", {:controller => "ratings", :action => "new", :book_id => @book.id, :user_id => session[:user_id]}, class: "btn btn-primary" %> 
-  
   <% else %>
 
       <%= link_to "Edit My Rating", edit_rating_path(@rating), class: "btn btn-warning" %>   
@@ -35,8 +32,6 @@
   <% end %> 
       <div id="edit-rating">
       </div>
-
- 
 
   <h4>Other User Ratings</h4>
 
