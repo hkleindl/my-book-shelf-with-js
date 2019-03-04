@@ -9,7 +9,7 @@ gem "rack", ">= 2.0.6"
 gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'bootstrap-sass', '3.3.7'
+gem "bootstrap-sass", ">= 3.4.1"
 gem 'pry'
 gem 'dotenv-rails'
 gem 'active_model_serializers'
