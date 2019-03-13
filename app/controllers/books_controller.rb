@@ -9,6 +9,10 @@ class BooksController < ApplicationController
       end
     else
       @books = Book.order(:name)
+      respond_to do |f|
+        f.html
+        f.json { render json: @books }
+      end
     end 
   end
 

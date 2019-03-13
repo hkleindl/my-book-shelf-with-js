@@ -46,6 +46,7 @@ class Book {
   }
 
   createRating() {
+    console.log(this)
     $('#new_rating').submit(function(e) {
       e.preventDefault();
       let formData = $(this).serialize();
@@ -64,7 +65,33 @@ class Book {
     })
   }
 
+  static sortByRating() {
+    $('#sort-button').on('click', function() {
+      $.getJSON('/books', function(resp) {
+        let books = resp
+        books.sort(function(a, b) {
+          return b.average_star_rating - a.average_star_rating
+        })
+        var htmlStr = ""
+        books.map(function(book) {
+          htmlStr += `<div class="book_list">
+          <h4><li><a href="/books/${book.id}">${book.name}</a></h4>
+          <p>by: <a href="/authors/${book.author.id}">${book.author.name}</a></p>`
+
+          $.each(book.genres, function(i, genre) {
+          htmlStr += (`<p><a href="/genres/${genre.id}">${genre.name}</a></p>`)
+          })
+
+          htmlStr += `<p>Average User Rating: ${book.average_star_rating} stars</p></li></div><br>`
+
+          $('ol').html(htmlStr)
+        })
+      })
+    })
+  }
+
   static ready() {
+    Book.sortByRating();
     let bookId = $('h1').data('id');
     if (bookId) {
       let book;
